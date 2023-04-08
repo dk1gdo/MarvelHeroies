@@ -1,18 +1,14 @@
 package com.example.marvelheroes
 
-import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.core.net.toUri
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
-import coil.transform.CircleCropTransformation
-import com.example.marvelheroes.fragments.HeroesListFragment
+import com.example.marvelheroes.databinding.HeroItemBinding
 import com.example.marvelheroes.models.Hero
 
+/*
 class HeroesRVAdapter(context: Context, private val heroes: List<Hero> ): RecyclerView.Adapter<HeroesRVAdapter.HeroesViewHolder?>() {
 
     private val layoutInflater: LayoutInflater = LayoutInflater.from(context)
@@ -46,4 +42,36 @@ class HeroesRVAdapter(context: Context, private val heroes: List<Hero> ): Recycl
             }
         }
     }
+}*/
+
+class HeroesRVAdapter :
+    ListAdapter<Hero, HeroesRVAdapter.HeroViewHolder>(DiffCallback) {
+
+    class HeroViewHolder(private var binding: HeroItemBinding):
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(hero: Hero) {
+            binding.hero = hero
+            binding.executePendingBindings()
+        }
+
+    }
+
+    companion object DiffCallback: DiffUtil.ItemCallback<Hero>() {
+        override fun areItemsTheSame(oldItem: Hero, newItem: Hero): Boolean {
+            return oldItem.name == newItem.name
+        }
+
+        override fun areContentsTheSame(oldItem: Hero, newItem: Hero): Boolean {
+            return oldItem.imageUrl == newItem.imageUrl
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeroViewHolder {
+        return HeroViewHolder(HeroItemBinding.inflate(LayoutInflater.from(parent.context)))
+    }
+    override fun onBindViewHolder(holder: HeroViewHolder, position:Int) {
+        val hero = getItem(position)
+        holder.bind(hero)
+    }
+
 }

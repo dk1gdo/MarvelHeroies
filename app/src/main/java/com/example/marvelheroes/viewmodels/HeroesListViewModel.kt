@@ -1,6 +1,6 @@
 package com.example.marvelheroes.viewmodels
 
-import androidx.lifecycle.MutableLiveData
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.marvelheroes.api.HeroesApi
@@ -9,13 +9,19 @@ import kotlinx.coroutines.launch
 
 class HeroesListViewModel : ViewModel() {
 
-    var _heroes = mutableListOf<Hero>()
+    var heroes = mutableListOf<Hero>()
     private fun getHeroes() {
         viewModelScope.launch {
-            _heroes = HeroesApi.retrofitInterface.getHeroesList().toMutableList()
+            heroes = HeroesApi.retrofitInterface.getHeroesList().toMutableList()
         }
     }
     init {
         getHeroes()
+
+        heroes.forEach {
+            Log.d("Init VM", it.name)
+        }
+        Log.d("Init VM", "end!")
+
     }
 }
