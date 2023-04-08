@@ -7,11 +7,25 @@
             name="vm"
             type="com.example.marvelheroes.viewmodels.HeroesListViewModel" />
     </data>
-    <androidx.recyclerview.widget.RecyclerView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/listHeroesFragment"
-        android:layout_margin="16dp"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        tools:context=".fragments.ListHeroesFragment"/>
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/listHeroesFragment"
+            android:layout_margin="16dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:context=".fragments.ListHeroesFragment"
+            app:listData="@{vm.heroes}"
+            app:spanCount="2"
+            tools:itemCount="16"
+            tools:listitem="@layout/hero_item"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ojihsrht"/>
+    </LinearLayout>
+
 </layout>

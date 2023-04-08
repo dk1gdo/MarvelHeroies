@@ -21,20 +21,10 @@ class HeroesListFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        /*val view = inflater.inflate(R.layout.fragment_list_heroes, container, false)
-        if (view is RecyclerView){
-
-        }
-
-
-        return view*/
         val binding = FragmentListHeroesBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.vm = viewModel
         binding.listHeroesFragment.adapter = HeroesRVAdapter()
-        /*binding.listHeroesFragment.adapter =
-            activity?.let { context?.let { it1 -> HeroesRVAdapter(it1, viewModel.heroes) } }*/
-
         return binding.root
     }
 }

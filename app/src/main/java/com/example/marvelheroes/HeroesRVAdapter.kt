@@ -50,6 +50,7 @@ class HeroesRVAdapter :
     class HeroViewHolder(private var binding: HeroItemBinding):
         RecyclerView.ViewHolder(binding.root) {
         fun bind(hero: Hero) {
+           //binding.hero = Hero("absd", "asdas", "asfsdf", 1111, "fdsfsd", "dasdas", "http://img", "dsadasd")
             binding.hero = hero
             binding.executePendingBindings()
         }
