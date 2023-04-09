@@ -56,6 +56,7 @@ dependencies {
 
     implementation "io.coil-kt:coil:2.2.2"
 
+    /* for ViewModel and fragment*/
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
     implementation 'androidx.fragment:fragment-ktx:1.5.6'
 
