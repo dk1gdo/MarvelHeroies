@@ -5,10 +5,12 @@ import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import coil.transform.CircleCropTransformation
+import coil.transform.RoundedCornersTransformation
 import com.example.marvelheroes.models.Hero
 
 @BindingAdapter("listData")
-fun bindRecyclerView(recyclerView: RecyclerView, data: List<Hero>) {
+fun bindRecyclerView(recyclerView: RecyclerView, data: List<Hero>?) {
     val adapter = recyclerView.adapter as HeroesRVAdapter
     adapter.submitList(data)
 }
@@ -20,6 +22,7 @@ fun bindImage(imageView: ImageView, imgUrl: String?){
         val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
         imageView.load(imgUri) {
             placeholder(android.R.drawable.ic_menu_gallery)
+            transformations(RoundedCornersTransformation(10F))
         }
     }
 }

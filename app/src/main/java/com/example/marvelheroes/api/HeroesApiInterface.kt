@@ -20,5 +20,7 @@ interface HeroesApiInterface  {
 }
 
 object HeroesApi {
-    val retrofitInterface: HeroesApiInterface by lazy { retrofit.create(HeroesApiInterface::class.java) }
+    val retrofitInterface: HeroesApiInterface by lazy {
+        retrofit.create(HeroesApiInterface::class.java)
+    }
 }

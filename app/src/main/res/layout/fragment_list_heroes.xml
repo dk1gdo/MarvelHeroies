@@ -7,25 +7,35 @@
             name="vm"
             type="com.example.marvelheroes.viewmodels.HeroesListViewModel" />
     </data>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context="com.example.marvelheroes.fragments.HeroesListFragment">
+
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:id="@+id/listHeroesFragment"
-            android:layout_margin="16dp"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:padding="8dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            tools:context=".fragments.ListHeroesFragment"
             app:listData="@{vm.heroes}"
             app:spanCount="2"
             tools:itemCount="16"
-            tools:listitem="@layout/hero_item"/>
+            tools:listitem="@layout/hero_item" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:imageUrl="@{vm.oneHero.imageurl}"
+            tools:srcCompat="@tools:sample/backgrounds/scenic"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ojihsrht"/>
-    </LinearLayout>
+            android:text="@string/app_name"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </layout>

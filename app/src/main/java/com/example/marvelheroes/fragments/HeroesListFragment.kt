@@ -15,7 +15,6 @@ class HeroesListFragment: Fragment() {
 
     private val viewModel: HeroesListViewModel by viewModels()
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

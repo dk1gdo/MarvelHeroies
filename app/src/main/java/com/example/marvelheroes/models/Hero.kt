@@ -7,6 +7,6 @@ data class Hero (
         val firstApperance: Int,
         val createdby: String,
         val publisher: String,
-        val imageUrl: String,
+        val imageurl: String,
         val bio: String
 )
